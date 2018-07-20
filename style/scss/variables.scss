@@ -1,0 +1,100 @@
+//
+// Variables author Serina Du
+// --------------------------------------------------
+
+/*System Style Base Value
+gray shadow
+colors
+line height
+character spacing
+word size
+ */
+
+
+//** gray shadow
+$white: #fff !default;
+$gray-100: #ffa000 !default;
+$black:  #000 !default;
+
+//** gray shadow
+
+//**colors
+$theme-color: #4081ff; //Theme color
+$hover-color: #6297ff; //Hover color
+$border-color: #d9d9d9; //Border color
+$disabled-color: #f7f7f7; //Failed color
+$font-color: #333; //font color
+$font-color-disabled: #959595; //Invalid font color
+$placeholder-color: #959595; //Enter the prompt font color
+$green-color: #00a854; //green
+$red-color: #f04134; //red
+$orange-color: #ffbf00; //orange
+//**colors
+
+//** line height
+$line-height-article: 1.7; //Article class height
+//** line height
+
+
+//** character spacing
+$letter-space-base: 0;
+//** character spacing
+
+//** word size
+$font-size-small: 12px; //Small font
+$font-size-content: 14px; //Standard font
+$font-size-title: 16px; //Title font
+//** word size
+
+
+
+/* System Common Style Default Value
+Font name
+body Internal font size
+Web page middle area width
+Responsive PC screen width threshold
+*/
+$font-family-base: 'PingFangSC','helvetica neue','hiragino sans gb','arial','microsoft yahei ui','microsoft yahei','simsun','sans-serif'!important;
+$font-size-body: $font-size-content;
+$font-weight-base: normal !default;
+$body-bg: #fff;
+$body-min-width: 1200px;
+
+//responsive screen width
+$responsive-xs-width: 768px;
+$responsive-sm-width: 992px;
+$responsive-md-width: 1200px;
+/* System Common Style Default Value
+*/
+
+
+/* System Business Compomtents Style Value
+font color
+background color
+Font size
+Row height
+*/
+
+/** Compontent variables
+Header
+Footer
+
+*/
+//header
+$header-color: $gray-100;
+$header-height: 67px;
+
+//footer
+$footer-color: $gray-100;
+
+
+
+
+/* System Base Compomtents Style Value
+Button
+*/
+//Button
+
+
+//global config
+$prefix-css: yz !default;
