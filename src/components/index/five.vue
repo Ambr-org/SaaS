@@ -19,18 +19,23 @@ export default {
   name: 'five',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
       fivelist: [{
+          src: require('~/assets/img/src/index/img_babite_png.png'),
+      },
+      {
+          src: require('~/assets/img/src/index/img_sanlian_png.png'),
+      },
+      {
           src: require('~/assets/img/src/index/img_bishen_png.png'),
       },
       {
           src: require('~/assets/img/src/index/img_chainpe_png.png'),
       },
       {
-          src: require('~/assets/img/src/index/img_dushu_png.png'),
+          src: require('~/assets/img/src/index/img_bilai_png.png'),
       },
       {
-          src: require('~/assets/img/src/index/img_bilai_png.png'),
+          src: require('~/assets/img/src/index/img_dushu_png.png'),
       }]
     }
   }
@@ -78,6 +83,14 @@ img{
             width: 300px;
         }
       }
+    }
+}
+@media (max-width:1024px){
+    .five-wrap .five-wrap-content {
+      text-align: center;
+    }
+    .five-wrap .five-wrap-content .wrap-content-investors {
+      margin: 0 auto;
     }
 }
 
