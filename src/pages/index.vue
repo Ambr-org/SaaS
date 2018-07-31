@@ -1,100 +1,53 @@
 <template>
     <!-- <header>222222</header> -->
-  <section class="section-wrap">
+
+  <section class="section-wrap"  @mousewheel="imgScroll">
 		
-		<div class="section section-1">
-				<Header />
+		<div class="section section-1" v-show="secShow === 1">
+				<AHeader />
 				<First />
-			<!-- <div class="title active">
-
-				<p class="tit">CSS3 纵向滚屏翻页，支持键盘，鼠标滚轮操作</p>
-
-			</div> -->
-
 		</div>
 
-		<div class="section section-2">
-			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">Project Summary</h3>
+		<div class="section section-2" v-show="secShow === 2">
+			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">{{titlelist.title1}}</h3>
 			<Second />
-			<!-- <div class="title">
-
-				<p class="tit">随便写写意思下!</p>
-
-			</div> -->
-
 		</div>
 
-		<div class="section section-3">
-			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">Team</h3>
+		<div class="section section-3" v-show="secShow === 3">
+			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">{{titlelist.title2}}</h3>
 			<Third />
-			<!-- <div class="title">
-
-				<p class="tit">随便写写意思下</p>
-
-			</div> -->
-
 		</div>
 
-		<div class="section section-4">
-			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">Consultant</h3>
+		<div class="section section-4" v-show="secShow === 4">
+			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">{{titlelist.title3}}</h3>
 			<Four />
-			<!-- <div class="title">
-
-				<p class="tit">随便写写意思下</p>
-
-			</div> -->
-
 		</div>
 
-		<div class="section section-5">
-			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">Institutional Investors</h3>
+		<div class="section section-5" v-show="secShow === 5">
+			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">{{titlelist.title4}}</h3>
 			<Five />
-
-			<!-- <div class="title">
-
-				<p class="tit">随便写写意思下</p>
-
-			</div> -->
-
 		</div>
-		<div class="section section-6">
-
-			<div class="title">
-
-				<p class="tit">随便写写意思下</p>
-
-			</div>
-
+		<div class="section section-6" v-show="secShow === 6">
+			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">{{titlelist.title5}}</h3>
+			<h6 style="width:588px;height:24px;font-size:12px;font-family:PingHei-Light;color:rgba(255,255,255,1);margin: 0 auto;">{{titlelist.title6}}</h6>
+			<Six />
 		</div>
-		<div class="section section-7">
-			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">Institutional Investors</h3>
+		<div class="section section-7" v-show="secShow === 7">
+			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">{{titlelist.title7}}</h3>
 			<Seven />
+		</div>
+		<div class="section section-8" v-show="secShow === 8">
+			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">{{titlelist.title8}}</h3>
+			<Eight />
 
-			<!-- <div class="title">
-
-				<p class="tit">随便写写意思下</p>
-
-			</div> -->
-
+			
+<AFooter />
 		</div>
 
-<!-- <nav>
-<ul class="section-btn">
+ <nav class="nav-position" v-if="secShow>=2">
+ 	<Progress :pagenum="secShow" />
 
-	  <li class="on"></li>
-
-	  <li></li>
-
-	  <li></li>
-
-	  <li></li>
-
-	  <li></li>
-
-	</ul>
-
-	<div class="arrow">&laquo;</div>
-</nav> -->
+</nav> 
 <!-- <footer>222</footer>	 -->
 
 	</section>
@@ -103,67 +56,157 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-import Header from '~/components/common/header'
+import AHeader from '~/components/common/aheader'
+
 import First from '~/components/index/first'
 import Second from '~/components/index/second'
 import Third from '~/components/index/third'
 import Four from '~/components/index/four'
 import Five from '~/components/index/five'
+import Six from '~/components/index/six'
 import Seven from '~/components/index/seven'
-import 'swiper/dist/css/swiper.css'
+import Eight from '~/components/index/eight'
+import AFooter from '~/components/common/afooter'
+import Progress from '~/components/common/progress'
+import "../../style/scss/common.scss";
+
 export default {
   name: 'index',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+	  secShow: 1,
+	  count: 1,
+	  clientHeight: '',
+	  pagedeltaY:0,
+	  titlelist_EN: {
+          title1:`Project Summary`,
+          title2:`Team`,
+          title3:`Consultant`,
+          title4:`Institutional Investors`,
+          title5:`Time Line`,
+          title6:`Multiple Chain and Cross Chain System Online`,
+		  title7:`Institutional Investors`,
+		  title8:`VIDEO`,
+      },
+      titlelist_CN: {
+          title1:`项目概要`,
+          title2:`团队成员`,
+          title3:`顾问`,
+          title4:`投资机构`,
+          title5:`路线图`,
+          title6:`多链和跨链`,
+		  title7:`社交媒体`,
+		  title8:`视频`,
+      },
+      titlelist:{}
     }
 	},
+	mounted () {
+  		// 获取浏览器可视区域高度
+      this.clientHeight =   `${document.documentElement.clientHeight}`;        //document.body.clientWidth;
+      //console.log(this.clientHeight);
+	  if(document.addEventListener){
+   		document.addEventListener('DOMMouseScroll',this.MozimgScroll.bind(this),false);
+		}
+		this.titlelist = this.titlelist_EN;
+    
+	},
+	computed: {
+    doneTodosLang(){
+        //console.log(this.$store);
+        return this.$store.getters.getlang;
+    }
+  },
+   watch: {
+    doneTodosLang(val){
+      let langcheck = val;
+      this.changeLang(langcheck);
+    }
+  },
+	methods:{
+		imgScroll(e){			
+			this.pagedeltaY += Math.abs(e.wheelDeltaY);
+			if(this.pagedeltaY>=this.clientHeight){
+				if(e.deltaY>0){
+					if(this.secShow<8){
+						this.secShow +=1;
+						this.pagedeltaY = 0;
+					}else{
+						this.secShow =8;
+					}
+				}else if(e.deltaY<0){
+					//console.log('1.  '+this.secShow);
+					if(this.secShow>1){
+						this.secShow -=1;
+					this.pagedeltaY = 0;
+					}else{
+						this.secShow =1;
+					}
+					//console.log('2.   '+this.secShow);
+				}else{
+					return;
+				}
+			}
+		},
+		MozimgScroll(e){
+			//console.log(e);		
+			this.pagedeltaY += Math.abs(e.layerY);
+	
+			if(this.pagedeltaY>=this.clientHeight){
+				if(e.detail>0){
+					if(this.secShow<8){
+						this.secShow +=1;
+						this.pagedeltaY = 0;
+					}else{
+						this.secShow =8;
+					}
+				}else if(e.detail<0){
+					//console.log('1.  '+this.secShow);
+					if(this.secShow>1){
+						this.secShow -=1;
+					this.pagedeltaY = 0;
+					}else{
+						this.secShow =1;
+					}
+					//console.log('2.   '+this.secShow);
+				}else{
+					return;
+				}
+			}
+		},
+		changeLang(lang){
+      //console.log(lang);
+      if(lang === false){
+          this.titlelist = this.titlelist_CN;
+      }else{
+          this.titlelist = this.titlelist_EN;
+      }
+    },
+	},
 	components:{
-		Header,
+		AHeader,
 		First,
 		Second,
 		Third,
 		Four,
 		Five,
-		Seven
+		Six,
+		Seven,
+		Eight,
+		AFooter,
+		Progress
 	}
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-// body{
-//   padding-top: 0px; overflow-y: hidden;
-// }
-// h1, h2 {
-//   font-weight: normal;
-// }
-// ul {
-//   list-style-type: none;
-//   padding: 0;
-// }
-// li {
-//   display: inline-block;
-//   margin: 0 10px;
-// }
-// a {
-//   color: #42b983;
-// }
-body{color:#222;-webkit-text-size-adjust:none;}
-
-body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl, dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td,iframe{margin:0; padding:0;}
-
-h1,h2,h3,h4,h5,h6{font-size:100%;}
-
-body,button,input,select,textarea {font-family:Tahoma,Arial,Roboto,”Droid Sans”,”Helvetica Neue”,”Droid Sans Fallback”,”Heiti SC”,sans-self;font-size:62.5%; line-height:1.5;}
-
-ol,ul{list-style:none;}
-
-html,body{ width:100%; height:100%; overflow:hidden;}
-
 .section-wrap{ 
-  width:100%;height:100%;overflow:visible;transition:transform 1s cubic-bezier(0.86,0,0.03,1);-webkit-transition:-webkit-transform 1s cubic-bezier(0.86,0,0.03,1);
+  width:100%;height:100%;transition:transform 1s cubic-bezier(0.86,0,0.03,1);-webkit-transition:-webkit-transform 1s cubic-bezier(0.86,0,0.03,1);
+
   .section{ 
     position:relative; width:100%; height:100vh;  background-color:#0A0F1D; background-position:center center; background-repeat:no-repeat;
     .title{
@@ -173,11 +216,8 @@ html,body{ width:100%; height:100%; overflow:hidden;}
 
     }
   }
-//   .section-1{ background-color:#337ab7}
-//   .section-2{ background-color:#5cb85c}
-//   .section-3{ background-color:#5bc0de}
-//   .section-4{ background-color:#f0ad4e}
-//   .section-5{ background-color:#d9534f}
+ 
+
 
 }
 
@@ -190,18 +230,17 @@ html,body{ width:100%; height:100%; overflow:hidden;}
 		.put-section-3{ transform:translateY(-300%);-webkit-transform:translateY(-300%);}
 
     .put-section-4{ transform:translateY(-400%);-webkit-transform:translateY(-400%);}
-    .section-btn{ width:14px;position:fixed;right:4%;top:50%;}
 
-		.section-btn li{ width:14px;height:14px;cursor:pointer;text-indent:-9999px;border-radius:50%;-webkit-border-radius:50%;margin-bottom:12px; background:#BD362F;text-align:center; color:#fff; onsor:pointer;}
+   .nav-position{
+	   	position: fixed;
+		right: 3%;
+		top: 25%;
+   }
+		@media (max-width:1024px){
+			.section.section-6 {
+				display: none;
+			}
+}
 
-		.section-btn li.on{ background:#fff}
-
-		.arrow{ opacity:1;animation:arrow 3s cubic-bezier(0.5,0,0.1,1) infinite;-webkit-animation:arrow 3s cubic-bezier(0.5,0,0.1,1) infinite;transform:rotate(-90deg);-webkit-transform:rotate(-90deg); position:absolute;bottom:10px;left:50%;margin-left:-30px;width:60px;height:60px;border-radius:100%;-webkit-border-radius:100%;line-height:60px;text-align:center;font-size:20px;color:#fff;border:1px solid #fff;cursor:pointer;overflow:hidden;}
-
-		.arrow:hover{ animation-play-state:paused;-webkit-animation-play-state:paused;}
-
-		@keyframes arrow{ 0%, 100%{bottom:10px; opacity:1;} 50%{bottom:50px; opacity:.5} }
-
-		@-webkit-keyframes arrow{ 0%, 100%{bottom:10px; opacity:1;} 50%{bottom:50px; opacity:.5} }
 
 </style>
