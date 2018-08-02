@@ -353,15 +353,22 @@ img{
     }
 }
 
-@media (max-width:1024px){
-    .third-wrap .third-wrap-content{ width:100%;text-align: center;}  
-    .third-wrap .third-wrap-content .wrap-content-person {
+// @media (max-width:1024px){
+//     .third-wrap .third-wrap-content{ width:100%;text-align: center;}  
+//     .third-wrap .third-wrap-content .wrap-content-person {
   
-     float: none; 
+//      float: none; 
    
-    margin: 0 auto;
-}
-.wrap-content-person:nth-of-type(2),.wrap-content-person:nth-of-type(3){display:none;}
-}
+//     margin: 0 auto;
+// }
+// .wrap-content-person:nth-of-type(2),.wrap-content-person:nth-of-type(3){display:none;}
+// }
+@media screen and (max-width: 1024px) and (min-width: 0) {
+	
+  .third-wrap{
+    max-width: 80%;
+    margin: 0px;
+  }
+}	
 
 </style>

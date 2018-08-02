@@ -95,3 +95,7 @@ a:hover {
 
   text-decoration: underline; }
 
+  @media screen and (max-width: 1024px) and (min-width: 0) {
+    html,body{ overflow: auto;}
+}
+
