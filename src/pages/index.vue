@@ -9,35 +9,35 @@
 		</div>
 
 		<div class="section section-2" v-show="secShow === 2">
-			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">{{titlelist.title1}}</h3>
+			<h3  class="section2-title">{{titlelist.title1}}</h3>
 			<Second />
 		</div>
 
 		<div class="section section-3" v-show="secShow === 3">
-			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">{{titlelist.title2}}</h3>
+			<h3 class="section3-title">{{titlelist.title2}}</h3>
 			<Third />
 		</div>
 
 		<div class="section section-4" v-show="secShow === 4">
-			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">{{titlelist.title3}}</h3>
+			<h3 class="section4-title">{{titlelist.title3}}</h3>
 			<Four />
 		</div>
 
 		<div class="section section-5" v-show="secShow === 5">
-			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">{{titlelist.title4}}</h3>
+			<h3 class="section5-title">{{titlelist.title4}}</h3>
 			<Five />
 		</div>
 		<div class="section section-6" v-show="secShow === 6">
-			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">{{titlelist.title5}}</h3>
-			<h6 style="width:588px;height:24px;font-size:12px;font-family:PingHei-Light;color:rgba(255,255,255,1);margin: 0 auto;">{{titlelist.title6}}</h6>
+			<h3 class="section6-title">{{titlelist.title5}}</h3>
+			<h6  class="section6-title-h6">{{titlelist.title6}}</h6>
 			<Six />
 		</div>
 		<div class="section section-7" v-show="secShow === 7">
-			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">{{titlelist.title7}}</h3>
+			<h3 class="section7-title">{{titlelist.title7}}</h3>
 			<Seven />
 		</div>
 		<div class="section section-8" v-show="secShow === 8">
-			<h3 style="color:#9D62FE;font-size:60px;font-weight:500;">{{titlelist.title8}}</h3>
+			<h3 class="section8-title">{{titlelist.title8}}</h3>
 			<Eight />
 
 			
@@ -204,6 +204,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+%sectiontitle{
+	color:#9D62FE;font-size:60px;font-weight:500;
+}
 .section-wrap{ 
   width:100%;height:100%;transition:transform 1s cubic-bezier(0.86,0,0.03,1);-webkit-transition:-webkit-transform 1s cubic-bezier(0.86,0,0.03,1);
 
@@ -215,6 +218,31 @@ export default {
       &.active .tit{ opacity:1;transform:translateY(-25px);-webkit-transform:translateY(-25px);transition:all 2s cubic-bezier(0.86,0,0.8,1);-webkit-transition:all 2s cubic-bezier(0.86,0,0.8,1);}
 
     }
+	.section2-title{
+		@extend %sectiontitle;
+	}
+	.section3-title{
+		@extend %sectiontitle;
+	}
+	.section4-title{
+		@extend %sectiontitle;
+	}
+	.section5-title{
+		@extend %sectiontitle;
+	}
+	.section6-title{
+		@extend %sectiontitle;
+		.section6-title-h6{
+			width:588px;height:24px;font-size:12px;font-family:PingHei-Light;color:rgba(255,255,255,1);margin: 0 auto;
+		}
+	}
+	.section7-title{
+		@extend %sectiontitle;
+	}
+	.section8-title{
+		@extend %sectiontitle;
+	}
+
   }
  
 
@@ -236,11 +264,41 @@ export default {
 		right: 3%;
 		top: 25%;
    }
-		@media (max-width:1024px){
-			.section.section-6 {
-				display: none;
-			}
-}
+// 		@media (max-width:1024px){
+// 			.section.section-6 {
+// 				display: none;
+// 			}
+// }
+@media screen and (max-width: 1024px) and (min-width: 0) {
+	.nav-position{display: none;}
 
+	.section-wrap{ 
+		height: auto;
+	 }
+  
+}	
+// @media (max-width: 767px) {
+//     .hidden-xs {
+//         display:none!important
+//     }
+// }
+
+// @media (min-width: 768px) and (max-width:991px) {
+//     .hidden-sm {
+//         display:none!important
+//     }
+// }
+
+// @media (min-width: 992px) and (max-width:1199px) {
+//     .hidden-md {
+//         display:none!important
+//     }
+// }
+
+// @media (min-width: 1200px) {
+//     .hidden-lg {
+//         display:none!important
+//     }
+// }
 
 </style>
