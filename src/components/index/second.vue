@@ -1,8 +1,6 @@
 <template>
   <div class="second-wrap">
-    <div class="second-wrap-content">
-        
-      
+    <div class="second-wrap-content">            
       <div class="row-dag">
           <div class="col-dag">
               <img src="../../assets/img/src/index/img_page2_01_png.png" alt="DAG" />
@@ -46,7 +44,7 @@ export default {
         dagdescibe:'Redefining trading units to expand to a variety of transaction types.',
         contracttitle:'Smart Contract',
         contractdescibe:'This solves the problem of DAG unable to support smart contracts.',
-        chainingtitle:'Multi-chaining and cross-chaining',
+        chainingtitle:'Multi-chain &  cross-chain',
         chainingdescibe:'A messenger and verifier system will help achieve consensus between chains for communication and transaction confirmation, respectively.',
      },
      secondlist_CN:{
@@ -91,21 +89,25 @@ export default {
 <style lang="scss" scoped>
 //每行混合器
 @mixin row-widths($wval, $p1, $p2, $p3) {
-    overflow: hidden;
-    padding: $p1 $p2 $p3;
-    width: $wval;
-    margin: 0 auto 30px;
-    border: 2px solid transparent;
+    width: 100%;
+    clear: both;
+        display: inline-block;
+        padding-left: 13%;
+    // overflow: hidden;
+    // padding: $p1 $p2 $p3;
+    // width: $wval;
+    // margin: 0 auto 30px;
+        border: 2px solid transparent;
         &:hover{
-        background: rgba(62, 94, 255, 0.3);
-        border: 2px solid #9567F7;
+        background: #0E152E;
+        border: 2px solid #342A5F;
         border-radius: 10px;
         }
 }
 //图片宽度混合器 159px
 @mixin col-widths($normal) {width:$normal;float: left;}
 //文字内容
-@mixin font-left {float: left;text-align: left;margin-left: 45px;}
+@mixin font-left {float: left;text-align: left;width: 60%;}
 //文字标题
 @mixin font-title {font-size: 50px;color: #fff;font-weight: 500;}
 //文字描述 316px
@@ -125,10 +127,11 @@ img{
     align-items: flex-start;
     justify-content: center;
     .second-wrap-content{
-      max-width: 1018px;
-      height:526px;
-      margin-top: 37px;
-      text-align: center;
+      width: 1056px;
+    //   padding-left: 13%;
+    //   height:526px;
+    //   margin-top: 37px;
+      text-align: left;
       .row-dag{
         @include row-widths(532px, 19px, 50px, 7px);
         }
@@ -136,21 +139,23 @@ img{
           @include row-widths(584px, 17px, 50px, 36px);
         }
       .row-chaining{
+          padding-top: 50px;
           @include row-widths(888px, 20px, 50px, 36px);
         }
         .col-dag{
-           @include col-widths(159px);
+           @include col-widths(21%);
         }
 
         .col-contract{
             margin-top: 20px;
-            @include col-widths(130px);
+            @include col-widths(24%);
         }
 
         .col-chaining{
-            @include col-widths(100px);
+            @include col-widths(21%);
         }
         .col-font-dag{
+            margin-left: 6%;
             @include font-left;
         }
         .font-dag-title{
@@ -161,6 +166,7 @@ img{
         }
 
         .col-font-contract{
+            margin-left: 3%;
             @include font-left;
         }
         .font-contract-title{
@@ -171,6 +177,7 @@ img{
         }
 
         .col-font-chaining{
+            margin-left: 6%;
             @include font-left;
         }
         .font-chaining-title{
@@ -190,13 +197,18 @@ img{
         height: 170px;
     }
 }
-@media (max-width:1024px){
-    .col-font-dag, .col-font-contract, .col-font-chaining{display:none;}
-    .second-wrap .second-wrap-content .row-dag,.second-wrap .second-wrap-content .row-contract,.second-wrap .second-wrap-content .row-chaining{
-        padding: 0;
-    text-align: center;
-    float:none;
-    }
+
+@media screen and (max-width: 1024px) and (min-width: 0) {
+	
+    
 }
+// @media (max-width:1024px){
+//     .col-font-dag, .col-font-contract, .col-font-chaining{display:none;}
+//     .second-wrap .second-wrap-content .row-dag,.second-wrap .second-wrap-content .row-contract,.second-wrap .second-wrap-content .row-chaining{
+//         padding: 0;
+//     text-align: center;
+//     float:none;
+//     }
+// }
 
 </style>

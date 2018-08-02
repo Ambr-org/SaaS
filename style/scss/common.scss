@@ -72,6 +72,18 @@ ol,ul{list-style:none;}
 ul {
   margin: 0;
   padding: 0; }
+  .little-knownsec-font{
+    clear: both;
+    color: #fff;
+    padding: 25px 0;
+    font-size: 22px;
+    &>a:link {
+      text-decoration: underline;
+    }
+    &>a:link, &>a:visited, &>a:hover, &>a:active {
+        color: #6897DF;
+    }
+  }
 
 a:link, a:visited, a:hover, a:active {
   color: #0099FF; }

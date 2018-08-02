@@ -21,12 +21,25 @@
               <span class="mediaicon  github" @click="iconclick('https://github.com/Ambr-org/Ambr')"></span>
               <span class="mediaicon  dianbao" @click="iconclick('http://t.me/AmbrGlobal2')"></span>
             </div>
+            <div class="little-knownsec-font" v-html="firstlist.knownsec"></div>
           </div>
         </el-col>
         <el-col :span="12">
-          <div class="wrap-content-margin">
+          <div class="wrap-content-margin wrap-mobile-img">
             <img src="../../assets/img/src/index/img_home_png.png" alt="banner" class="img-home-width"/>
-
+          </div>
+          <div class="mobile-icon">
+            <div class="little-smail-font">{{firstlist.aboutmedia}}</div>
+            <div class="icon-media-five">
+              <span class="mediaicon  facebook" @click="iconclick('https://www.facebook.com/Ambr-209694159653747/?modal=admin_todo_tour')"></span>
+              <span class="mediaicon  instagram" @click="iconclick('https://www.instagram.com/ambrglobal/')"></span>
+              <span class="mediaicon  twitter" @click="iconclick('https://mobile.twitter.com/AmbrGlobal')"></span>
+              <span class="mediaicon  reddit" @click="iconclick('https://www.reddit.com/')"></span>
+              <span class="mediaicon  github" @click="iconclick('https://github.com/Ambr-org/Ambr')"></span>
+              <span class="mediaicon  dianbao" @click="iconclick('http://t.me/AmbrGlobal2')"></span>
+            </div>
+            <!-- <div></div> -->
+            <div class="little-knownsec-font" v-html="firstlist.knownsec"></div>
           </div>
         </el-col>
       </el-row>
@@ -45,14 +58,16 @@ export default {
         buttonleft: `Join our developer community `,
         buttonherf:`../static/whitepaper/Ambr_English.pdf`,
         buttonright:`Download white paper`,
-        aboutmedia:`About our social media`
+        aboutmedia:`About our social media`,
+        knownsec: `The security of Ambr is provided by<a href="https://www.knownsec.com" target="_blank">KNOWNSEC.COM</a>`
       },
       firstlist_CN:{
         titledescribe: `全球首个面向百亿级Dapp的应用架构`,
         buttonleft: `加入我们开发者社区 `,
         buttonherf:`../static/whitepaper/Ambr_Chinese.pdf`,
         buttonright:`下载白皮书`,
-        aboutmedia:`社交媒体`
+        aboutmedia:`社交媒体`,
+        knownsec:`本项目安全由知道创宇独家提供<a href="https://www.knownsec.com" target="_blank">KNOWNSEC.COM</a>`
       },
       firstlist:{},
     }
@@ -115,6 +130,9 @@ a{text-decoration: none;}
         .content-smail-font{
           font-size:15px;
         }
+      }
+      .mobile-icon{
+        display: none;
       }
       .wrap-button-margin{
         margin-top: 57px;
@@ -186,7 +204,18 @@ a{text-decoration: none;}
           background: url("../../assets/img/src/index/icon_dianbao_png.png");
         }
       }
-
+      .little-knownsec-font{
+        clear: both;
+        color: #fff;
+        padding: 25px 0;
+        font-size: 22px;
+        &>a:link {
+          text-decoration: underline;
+        }
+        &>a:link, &>a:visited, &>a:hover, &>a:active {
+            color: #6897DF;
+        }
+      }
     }
 }
 @media (max-width:1600px){
@@ -197,37 +226,212 @@ a{text-decoration: none;}
       width: 550px;
     }
 }
-@media (max-width:1024px){
+
+@media screen and (max-width: 1024px) and (min-width: 0) {
+    .first-wrap {
+      display: flex;
+      flex-direction: column;
+      padding-left: 10%;
+      justify-content: flex-start;
+    }
     .first-wrap .first-wrap-content{
       width: 100%;
       text-align: center;
     }
-    .el-col-12{width: 100%;}
-
+    .el-col-12{width: 80%;}
+    .first-wrap .first-wrap-content .wrap-content-margin .content-big-font{
+      font-size: 90px;
+      font-family:Roboto-Medium;
+    }
     .first-wrap .first-wrap-content .wrap-content-margin .content-smail-font {
-      display: none;
+      font-size: 36px;
+      font-family:Roboto-Medium;
+    }
+    .first-wrap .first-wrap-content .wrap-button-margin{
+      width: 25%;
+    }
+    .first-wrap .first-wrap-content .wrap-button-margin .button-left{
+      margin-bottom: 10%
     }
     .first-wrap .first-wrap-content .little-smail-font {
       display: none;
     }
-    .first-wrap .first-wrap-content .wrap-content-margin{text-align:center;}
-    .first-wrap .first-wrap-content .wrap-button-margin{
-      text-align: center;
-      margin:0px;
+    .first-wrap .first-wrap-content .icon-media-five{
+      display: none;
     }
-    .img-home-width {
-      width: 250px;
-      margin-top: 25px;
+    .first-wrap .first-wrap-content .little-knownsec-font{
+      display: none;
     }
-    .first-wrap .first-wrap-content .icon-media-five {
-      margin: 47px auto 0px;
-      text-align: center;
+    .first-wrap .first-wrap-content .wrap-mobile-img {
+      margin-top: 7%;
     }
-    .first-wrap .first-wrap-content .icon-media-five .mediaicon {
-      margin: 0px 18px;
+    .wrap-mobile-img .img-home-width{
+      width: 80%;
+      height: 35%;
     }
-    .first-wrap .first-wrap-content .wrap-button-margin .button-right {
-      margin-top: 20px;
+    .mobile-icon{
+      display: block !important;
+      text-align: left;
+      .little-smail-font {
+        font-size:22px;
+        font-family:Roboto-Regular;
+        color:rgba(255,255,255,1);
+        display: block !important;
+      }
+      .icon-media-five{
+        display: block !important;
+        margin: 2% 0;
+        padding: 0 0 4% 0px;
+      }
+      .little-knownsec-font{
+        display: block !important;
+        clear:both;
+      }
     }
 }
+// @media (max-width:1024px){
+//     .first-wrap .first-wrap-content{
+//       width: 100%;
+//       text-align: center;
+//     }
+//     .el-col-12{width: 100%;}
+
+//     .first-wrap .first-wrap-content .wrap-content-margin .content-smail-font {
+//       display: none;
+//     }
+//     .first-wrap .first-wrap-content .little-smail-font {
+//       display: none;
+//     }
+//     .first-wrap .first-wrap-content .wrap-content-margin{text-align:center;}
+//     .first-wrap .first-wrap-content .wrap-button-margin{
+//       text-align: center;
+//       margin:0px;
+//     }
+//     .img-home-width {
+//       width: 250px;
+//       margin-top: 25px;
+//     }
+//     .first-wrap .first-wrap-content .icon-media-five {
+//       margin: 47px auto 0px;
+//       text-align: center;
+//     }
+//     .first-wrap .first-wrap-content .icon-media-five .mediaicon {
+//       margin: 0px 18px;
+//     }
+//     .first-wrap .first-wrap-content .wrap-button-margin .button-right {
+//       margin-top: 20px;
+//     }
+// }
+
+@media screen and(min-width: 320px)and(max-width: 359px){ 
+  
+} 
+@media screen and(min-width: 360px)and(max-width: 374px){ 
+    
+} 
+@media screen and(min-width: 375px)and(max-width: 385px){ 
+    .first-wrap .first-wrap-content .wrap-content-margin .content-big-font{
+      font-size: 45px;
+      line-height: 30px;
+    }
+    .first-wrap .first-wrap-content .wrap-content-margin .content-smail-font {
+      font-size: 18px;
+      line-height: 50px;
+    }
+    .first-wrap .first-wrap-content .wrap-button-margin{
+      margin-top: 12px;
+    }
+    .first-wrap .first-wrap-content .little-smail-font {
+      margin-top: 0px;
+      font-size: 12px;   
+    }
+    .first-wrap .first-wrap-content .icon-media-five {
+      margin-top: 10px;
+    }
+    .first-wrap .first-wrap-content .icon-media-five .mediaicon{margin-right: 14px;}
+    .first-wrap .first-wrap-content .little-knownsec-font{font-size: 12px;}
+} 
+@media screen and(min-width: 386px)and(max-width: 392px) { 
+
+} 
+@media screen and(min-width: 393px)and(max-width: 400px){ 
+
+} 
+@media screen and(min-width: 401px)and(max-width: 414px){ 
+    
+} 
+@media screen and(min-width: 414px)and (max-width: 767px) {
+
+}
+
+@media (min-width: 768px) and (max-width:991px) {
+   
+}
+
+@media (min-width: 992px) and (max-width:1199px) {
+   
+}
+
+// @media screen and (max-width: 1024px) and (min-width: 0) {
+//     .first-wrap {
+//       display: flex;
+//       flex-direction: column;
+//       padding-left: 10%;
+//       justify-content: flex-start;
+//     }
+//     .first-wrap .first-wrap-content{
+//       width: 100%;
+//       text-align: center;
+//     }
+//     .el-col-12{width: 100%;}
+//     .first-wrap .first-wrap-content .wrap-content-margin .content-big-font{
+//       font-size: 90px;
+//       font-family:Roboto-Medium;
+//     }
+//     .first-wrap .first-wrap-content .wrap-content-margin .content-smail-font {
+//       font-size: 36px;
+//       font-family:Roboto-Medium;
+//     }
+//     .first-wrap .first-wrap-content .wrap-button-margin{
+//       width: 25%;
+//     }
+//     .first-wrap .first-wrap-content .wrap-button-margin .button-left{
+//       margin-bottom: 10%
+//     }
+//     .first-wrap .first-wrap-content .little-smail-font {
+//       display: none;
+//     }
+//     .first-wrap .first-wrap-content .icon-media-five{
+//       display: none;
+//     }
+//     .first-wrap .first-wrap-content .little-knownsec-font{
+//       display: none;
+//     }
+//     .first-wrap .first-wrap-content .wrap-mobile-img {
+//       margin-top: 7%;
+//     }
+//     .wrap-mobile-img .img-home-width{
+//       width: 80%;
+//       height: 35%;
+//     }
+//     .mobile-icon{
+//       display: block !important;
+//       text-align: left;
+//       .little-smail-font {
+//         font-size:22px;
+//         font-family:Roboto-Regular;
+//         color:rgba(255,255,255,1);
+//         display: block !important;
+//       }
+//       .icon-media-five{
+//         display: block !important;
+//         margin: 2% 0;
+//         padding: 0 0 4% 0px;
+//       }
+//       .little-knownsec-font{
+//         display: block !important;
+//         clear:both;
+//       }
+//     }
+// }	
 </style>

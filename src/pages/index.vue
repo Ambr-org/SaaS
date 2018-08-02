@@ -3,8 +3,8 @@
 
   <section class="section-wrap"  @mousewheel="imgScroll">
 		
-		<div class="section section-1" v-show="secShow === 1">
 				<AHeader />
+		<div class="section section-1" v-show="secShow === 1">
 				<First />
 		</div>
 
@@ -208,10 +208,10 @@ export default {
 	color:#9D62FE;font-size:60px;font-weight:500;
 }
 .section-wrap{ 
-  width:100%;height:100%;transition:transform 1s cubic-bezier(0.86,0,0.03,1);-webkit-transition:-webkit-transform 1s cubic-bezier(0.86,0,0.03,1);
-
+  width:100%;height:100%;background-color:#0A0F1D; background-position:center center; background-repeat:no-repeat;
+  transition:transform 1s cubic-bezier(0.86,0,0.03,1);-webkit-transition:-webkit-transform 1s cubic-bezier(0.86,0,0.03,1);
   .section{ 
-    position:relative; width:100%; height:100vh;  background-color:#0A0F1D; background-position:center center; background-repeat:no-repeat;
+    position:relative; width:100%; height:100vh;  
     .title{
       width:100%;position:absolute;top:10%;color:#fff;font-size:2.4em;text-align:center;
       p{ padding:0 4%;opacity:0}
